@@ -8,18 +8,18 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class HerokuappTests {
 
-    //Не работает через actions
+    //Через actions
     @Test
     void herokuappActionsTest() {
 
         open("https://the-internet.herokuapp.com/drag_and_drop");
 
-        actions().clickAndHold($("#column-a")).moveToElement($("#column-b")).release().build().perform();;
+        actions().clickAndHold($("#column-a")).moveToElement($("#column-b").hover()).release().build().perform();
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
     }
 
-    //Работает через DragAndDrop и DragAndDropTo
+    //Через DragAndDrop и DragAndDropTo
     @Test
     void herokuappDragAndDropTest() {
 
